@@ -1,0 +1,15 @@
+'scopeName': 'source.covalence'
+'name': 'Covalence'
+'fileTypes': ['ext1', 'ext2']
+
+'patterns': [
+  {
+    'match': '\\b(function)\\s+(\\w+)\\s*\\(.*\\)'
+    'captures':
+        '1':
+            'name': 'keyword.control.covalence'
+        '2':
+            'name': 'entity.name.function.covalence'
+    'name': 'meta.function.covalence'
+  }
+]
