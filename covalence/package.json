@@ -1,22 +1,19 @@
 {
   "name": "covalence",
-  "version": "1.0.0",
-  "description": "syntax highlighter",
-  "engines": {
-    "atom":"*"
+  "main": "./lib/covalence",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "covalence:toggle"
   },
-  "main": "./lib/main",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Covalence-g25/covalence.git"
-  },
-  "author": "Covalence",
+  "repository": "https://github.com/Covalence-g25/covalence",
+  "homepage": "https://github.com/Covalence-g25/covalence#readme",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Covalence-g25/covalence/issues"
+  "engines": {
+    "atom": "*"
   },
-  "homepage": "https://github.com/Covalence-g25/covalence#readme"
+  "dependencies": {
+  }
 }
