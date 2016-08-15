@@ -59,8 +59,8 @@ export default {
 
         function sendData(pageData) {
             console.log('batman');
-            firebase.database().set({
-                pageData: pageData,
+            firebase.database().ref("projects").set({
+                "pageData": pageData
             });
         }
 
