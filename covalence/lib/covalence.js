@@ -1,5 +1,16 @@
 'use babel';
 
+var firebase = require("firebase/app");
+require("firebase/auth");
+require("firebase/database");
+var config = {
+    apiKey: "AIzaSyCh_DO86KwghVrvE5WyeZ0h0qK3bLIQxi8",
+    authDomain: "covalence-6384b.firebaseapp.com",
+    databaseURL: "https://covalence-6384b.firebaseio.com",
+    storageBucket: "covalence-6384b.appspot.com",
+};
+firebase.initializeApp(config);
+
 import CovalenceView from './covalence-view';
 import {
     CompositeDisposable
@@ -24,7 +35,6 @@ export default {
         // Register command that toggles this view
         this.subscriptions.add(atom.commands.add('atom-workspace', {
             'covalence:toggle': () => this.toggle()
-                //We can add multiple functions in here for different options, ie start session, join session, etc.
         }));
     },
 
@@ -41,10 +51,22 @@ export default {
     },
 
     toggle() {
+        var pageData;
         console.log('Covalence was toggled!');
-        //put the functionality in here for now
-        //Need to access and place all div elements with a class of "lines" into a var
-        //with this we can send to database, consolelog, etc.
+        atom.workspace.observeTextEditors(function(editor) {
+            pageData = editor.getText();
+        });
+
+        function sendData(pageData) {
+            console.log('batman');
+            firebase.database().set({
+                pageData: pageData,
+            });
+        }
+
+        sendData(pageData);
+
+        console.log(pageData);
         return (
             this.modalPanel.isVisible() ?
             this.modalPanel.hide() :
