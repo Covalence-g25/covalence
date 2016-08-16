@@ -58,6 +58,7 @@ export default {
         });
 
         function sendData(pageData) {
+            firebase.database.INTERNAL.forceWebSockets();
             console.log('batman');
             firebase.database().ref("projects").set({
                 "pageData": pageData
