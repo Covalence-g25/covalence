@@ -1,4 +1,5 @@
 'use babel';
+var victory = "victory!";
 
 var firebase = require("firebase/app");
 require("firebase/auth");
@@ -15,6 +16,12 @@ import CovalenceView from './covalence-view';
 import {
     CompositeDisposable
 } from 'atom';
+
+var changedData = firebase.database().ref('projects');
+changedData.on('value', function(pulledData) {
+    console.log('This is a new console log');
+    console.log(pulledData.val().pageData);
+});
 
 export default {
 
@@ -59,15 +66,20 @@ export default {
 
         function sendData(pageData) {
             firebase.database.INTERNAL.forceWebSockets();
-            console.log('batman');
+            console.log('rawr');
             firebase.database().ref("projects").set({
                 "pageData": pageData
             });
         }
 
+
+
         sendData(pageData);
 
+<<<<<<< HEAD
         console.log(pageData);
+=======
+>>>>>>> 1e8192c9e2f2a66fa06abe10db9fc837c1ab47fa
     }
 
 };
