@@ -3,8 +3,7 @@
   "main": "./lib/covalence",
   "version": "0.0.0",
   "description": "",
-  "keywords": [
-  ],
+  "keywords": [],
   "activationCommands": {
     "atom-workspace": "covalence:toggle"
   },
@@ -15,5 +14,6 @@
     "atom": "*"
   },
   "dependencies": {
+    "firebase": "^3.3.0"
   }
 }
