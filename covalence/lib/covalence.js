@@ -67,11 +67,6 @@ export default {
         sendData(pageData);
 
         console.log(pageData);
-        return (
-            this.modalPanel.isVisible() ?
-            this.modalPanel.hide() :
-            this.modalPanel.show()
-        );
     }
 
 };
