@@ -19,10 +19,11 @@ import {
 var changedData = firebase.database().ref('projects');
 changedData.on('value', function(pulledData) {
     atom.workspace.observeTextEditors(function(editor) {
-        editor.setTextInBufferRange([
-            [0, 0],
-            [0, 0]
-        ], pulledData.val().pageData);
+        // editor.setTextInBufferRange([
+        //     [0, 0],
+        //     [0, 0]
+        // ], pulledData.val().pageData);
+        editor.setText(pulledData.val().pageData)
     });
 });
 
@@ -64,17 +65,22 @@ export default {
         var pageData;
         console.log('Covalence was toggled!');
         atom.workspace.observeTextEditors(function(editor) {
-            pageData = editor.getText();
+            editor.onDidChange(function(){
+              pageData = editor.getText();
+              console.log(pageData);
+              sendData(pageData)
+            })
         });
 
         function sendData(pageData) {
             firebase.database.INTERNAL.forceWebSockets();
             console.log('rawr');
+            console.log(pageData);
             firebase.database().ref("projects").set({
                 "pageData": pageData
             });
         }
-        sendData(pageData);
+        // sendData(pageData);
     }
 
 };
