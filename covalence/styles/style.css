@@ -1,0 +1,56 @@
+/* Colors in scheme from darkest to lightest:
+navy blue -- #2D3142
+gunmetal blue -- #4F5D75 or 9fc6cc
+orange -- #EF8354
+silver -- #BFC0C0
+white -- #FDFDFD
+https://coolors.co/2d3142-4f5d75-bfc0c0-ffffff-ef8354
+*/
+
+/* Header Styles */
+
+header, footer {
+  background-color: #abc7cc;
+  height: 100px;
+}
+
+header img{
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 380px;
+}
+
+
+/* Body Styles */
+
+h2 {
+  display: flex;
+  justify-content: center;
+  font-family: 'Quicksand';
+  font-size: 2rem;
+}
+
+body p {
+  font-family: 'Open Sans';
+}
+
+/* Footer Styles */
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+footer a {
+  font-family: 'Quicksand';
+}
+
+footer p {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* Media Queries */
