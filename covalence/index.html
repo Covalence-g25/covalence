@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app='Covalence'>
+  <head>
+    <meta charset="UTF-8">
+    <title>Covalence</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="./styles/style.css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:bold|Open+Sans" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <img src="covalence.png">
+    </header>
+    <h2>A file sharing and version control platform that updates in real time.</h2>
+    <div class="container">
+      <div ui-view></div>
+    </div>
+    <footer>
+      <a href="about.html">About Us</a>
+      <p>&copy; Covalence | 2016</p>
+    </footer>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js" charset="utf-8"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script>
+   <script src="js/app.js" charset="utf-8"></script>
+   <script src="js/controllers/Home.controller.js" charset="utf-8"></script>
+   <script src="js/controllers/Commit.controller.js" charset="utf-8"></script>
+   <script src="js/controllers/FileDetail.controller.js" charset="utf-8"></script>
+   <script src="js/controllers/Files.controller.js" charset="utf-8"></script>
+  </body>
+</html>

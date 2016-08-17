@@ -75,10 +75,6 @@ export default {
 
         sendData(pageData);
 
-<<<<<<< HEAD
-        console.log(pageData);
-=======
->>>>>>> 1e8192c9e2f2a66fa06abe10db9fc837c1ab47fa
     }
 
 };
