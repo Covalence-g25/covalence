@@ -1,5 +1,4 @@
 'use babel';
-var victory = "victory!";
 
 var firebase = require("firebase/app");
 require("firebase/auth");
@@ -19,7 +18,12 @@ import {
 
 var changedData = firebase.database().ref('projects');
 changedData.on('value', function(pulledData) {
-    console.log(pulledData.val().pageData);
+    atom.workspace.observeTextEditors(function(editor) {
+        editor.setTextInBufferRange([
+            [0, 0],
+            [0, 0]
+        ], pulledData.val().pageData);
+    });
 });
 
 export default {
@@ -70,11 +74,7 @@ export default {
                 "pageData": pageData
             });
         }
-
-
-
         sendData(pageData);
-
     }
 
 };
