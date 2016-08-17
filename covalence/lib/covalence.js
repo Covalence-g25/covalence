@@ -19,7 +19,6 @@ import {
 
 var changedData = firebase.database().ref('projects');
 changedData.on('value', function(pulledData) {
-    console.log('This is a new console log');
     console.log(pulledData.val().pageData);
 });
 
