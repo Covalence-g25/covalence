@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle covalence",
+        "command": "covalence:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "covalence",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "covalence:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
