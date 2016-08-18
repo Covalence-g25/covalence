@@ -1,5 +1,9 @@
 'use babel';
 
+var currentRow = 0;
+var newRow = 0;
+var applyChange = true;
+
 var firebase = require("firebase/app");
 require("firebase/auth");
 require("firebase/database");
@@ -19,11 +23,16 @@ import {
 var changedData = firebase.database().ref('projects');
 changedData.on('value', function(pulledData) {
     atom.workspace.observeTextEditors(function(editor) {
-        // editor.setTextInBufferRange([
-        //     [0, 0],
-        //     [0, 0]
-        // ], pulledData.val().pageData);
-        editor.setText(pulledData.val().pageData)
+        editor.setTextInBufferRange([
+            [pulledData.val().rowToEdit, 0],
+            [pulledData.val().rowToEdit, 0]
+        ], pulledData.val().lineData);
+        console.log(currentRow);
+        console.log(newRow);
+        applyChange = false;
+        // currentRow = editor.setCursorBufferPosition([newRow, 0]);
+
+        // editor.setText(pulledData.val().lineData)
     });
 });
 
@@ -63,21 +72,41 @@ export default {
 
     toggle() {
         var pageData;
-        console.log('Covalence was toggled!');
+        var lineData;
+        // var currentRow = 0;
+        // var newRow = 0;
         atom.workspace.observeTextEditors(function(editor) {
-            editor.onDidChange(function(){
-              pageData = editor.getText();
-              console.log(pageData);
-              sendData(pageData)
-            })
+          currentRow = editor.getCursorBufferPosition().row;
+          newRow = editor.getCursorBufferPosition().row;
+          editor.onDidChange(function(){
+            newRow = editor.getCursorBufferPosition().row;
+            console.log(currentRow);
+            console.log(newRow);
+            if (newRow !== currentRow && applyChange === true) {
+              lineData = editor.lineTextForBufferRow(currentRow);
+              console.log(lineData);
+              if (lineData) {
+                sendData(lineData, currentRow);
+                console.log(lineData);
+                // currentRow = editor.getCursorBufferPosition().row;
+              }
+            }
+          })
+
+            // editor.onDidChange(function(){
+            //   pageData = editor.getText();
+            //   console.log(pageData);
+            //   sendData(pageData)
+            // })
         });
 
-        function sendData(pageData) {
+        function sendData(lineData, rowToEdit) {
             firebase.database.INTERNAL.forceWebSockets();
-            console.log('rawr');
-            console.log(pageData);
+            console.log(lineData);
+            console.log(rowToEdit);
             firebase.database().ref("projects").set({
-                "pageData": pageData
+                "lineData": lineData,
+                "rowToEdit": rowToEdit
             });
         }
         // sendData(pageData);
