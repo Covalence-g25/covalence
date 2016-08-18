@@ -1,0 +1,22 @@
+{
+  "name": "covalence",
+  "version": "1.0.0",
+  "description": "A file sharing and version control platform that updates in real time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Covalence-g25/covalence.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Covalence-g25/covalence/issues"
+  },
+  "homepage": "https://github.com/Covalence-g25/covalence#readme",
+  "dependencies": {
+    "pg": "^6.1.0"
+  }
+}
